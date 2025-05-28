@@ -3,15 +3,14 @@
 #include "applicationInternal/scenes/sceneRegistry.h"
 #include "applicationInternal/commandHandler.h"
 // devices
-#include "devices/AVreceiver/device_yamahaAmp/device_yamahaAmp.h"
+//#include "devices/AVreceiver/device_onkyoAmp/device_onkyoAmp.h"
+//#include "devices/mediaPlayer/device_shield/device_shield.h"
+#include "devices/misc/device_smarthome/device_smarthome.h"
 #include "devices/misc/device_smarthome/gui_smarthome.h"
 // scenes
 #include "scene__default.h"
 #include "scenes/scene_allOff.h"
-#include "scenes/scene_TV.h"
-#include "scenes/scene_fireTV.h"
-#include "scenes/scene_chromecast.h"
-#include "scenes/scene_appleTV.h"
+#include "scenes/scene_shield.h"
 
 uint16_t SCENE_SELECTION;
 std::string scene_name_selection = "sceneSelection";
@@ -48,15 +47,15 @@ void register_scene_defaultKeys(void) {
   
   key_commands_short_default = {
                                                                                                              {KEY_OFF,   SCENE_ALLOFF_FORCE},
-    {KEY_STOP,  GUI_SMARTHOME_ACTIVATE},/*{KEY_REWI,  COMMAND_UNKNOWN  }, {KEY_PLAY,  COMMAND_UNKNOWN  },    {KEY_FORW,  COMMAND_UNKNOWN  },*/
-  /*{KEY_CONF,  COMMAND_UNKNOWN  },                                                                          {KEY_INFO,  COMMAND_UNKNOWN  },*/
-                                                     /*  {KEY_UP,    COMMAND_UNKNOWN  },*/
-                      {KEY_LEFT,  GUI_PREV  },       /*  {KEY_OK,    COMMAND_UNKNOWN  },*/  {KEY_RIGHT, GUI_NEXT  },
-                                                     /*  {KEY_DOWN,  COMMAND_UNKNOWN  },*/
-    {KEY_BACK,  SCENE_SELECTION  },                                                                        /*{KEY_SRC,   COMMAND_UNKNOWN  },*/
-    {KEY_VOLUP, YAMAHA_VOL_PLUS  },                      {KEY_MUTE,  YAMAHA_MUTE_TOGGLE},                  /*{KEY_CHUP,  COMMAND_UNKNOWN  },*/
-    {KEY_VOLDO, YAMAHA_VOL_MINUS },                      {KEY_REC,   SCENE_BACK_TO_PREVIOUS_GUI_LIST  },   /*{KEY_CHDOW, COMMAND_UNKNOWN  },*/
-    {KEY_RED,   SCENE_TV_FORCE   },    {KEY_GREEN, SCENE_FIRETV_FORCE},  {KEY_YELLO, SCENE_CHROMECAST_FORCE},{KEY_BLUE,  SCENE_APPLETV_FORCE},
+    {KEY_STOP,  SMARTHOME_MQTT_SHIELD_STOP},        {KEY_REWI,  SMARTHOME_MQTT_SHIELD_REVERSE  },      {KEY_PLAY,  SMARTHOME_MQTT_SHIELD_PLAY  },         {KEY_FORW,  SMARTHOME_MQTT_SHIELD_FORWARD  }, 
+    {KEY_CONF,  SMARTHOME_MQTT_SHIELD_SHIELD  },                                                                            {KEY_INFO,  SMARTHOME_MQTT_AMPLI_INFO  }, 
+                                                       {KEY_UP,    SMARTHOME_MQTT_SHIELD_UP  },  
+                      {KEY_LEFT,  SMARTHOME_MQTT_SHIELD_LEFT  },      {KEY_OK,    SMARTHOME_MQTT_SHIELD_OK  },    {KEY_RIGHT, SMARTHOME_MQTT_SHIELD_RIGHT  },
+                                                       {KEY_DOWN,  SMARTHOME_MQTT_SHIELD_DOWN  },  
+    {KEY_BACK,  SMARTHOME_MQTT_SHIELD_EXIT  },                                                                           {KEY_SRC,   COMMAND_UNKNOWN  }, 
+    {KEY_VOLUP, SMARTHOME_MQTT_AMPLI_VOL_UP  },        {KEY_MUTE,  SMARTHOME_MQTT_AMPLI_MUTE},                {KEY_CHUP,  COMMAND_UNKNOWN  },
+    {KEY_VOLDO, SMARTHOME_MQTT_AMPLI_VOL_DOWN },      {KEY_REC,   SCENE_BACK_TO_PREVIOUS_GUI_LIST  },         {KEY_CHDOW, COMMAND_UNKNOWN  },
+    {KEY_RED,   COMMAND_UNKNOWN   },     {KEY_GREEN, COMMAND_UNKNOWN},      {KEY_YELLO, COMMAND_UNKNOWN},     {KEY_BLUE,  COMMAND_UNKNOWN  },
   };
   
   key_commands_long_default = {

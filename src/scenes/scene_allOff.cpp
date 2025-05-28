@@ -4,8 +4,8 @@
 #include "applicationInternal/scenes/sceneRegistry.h"
 #include "applicationInternal/hardware/hardwarePresenter.h"
 // devices
-#include "devices/TV/device_samsungTV/device_samsungTV.h"
-#include "devices/AVreceiver/device_yamahaAmp/device_yamahaAmp.h"
+//#include "devices/TV/device_lgTV/device_lgTV.h"
+#include "devices/misc/device_smarthome/device_smarthome.h"
 #include "applicationInternal/commandHandler.h"
 
 uint16_t SCENE_ALLOFF      ; //"Scene_allOff"
@@ -17,57 +17,22 @@ std::map<char, uint16_t> key_commands_long_allOff;
 
 void scene_setKeys_allOff() {
   key_repeatModes_allOff = {
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
   };
   
   key_commands_short_allOff = {
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
   };
   
   key_commands_long_allOff = {
-  
-  
   };
 
 }
 
 void scene_start_sequence_allOff(void) {
-  executeCommand(SAMSUNG_POWER_OFF);
+  executeCommand(SMARTHOME_MQTT_AMPLI_POWER_OFF);
   delay(500);
-  executeCommand(YAMAHA_POWER_OFF);
-  delay(500);
-  // repeat IR to be sure
-  executeCommand(SAMSUNG_POWER_OFF);
-  delay(500);
-  executeCommand(YAMAHA_POWER_OFF);
+  executeCommand(SMARTHOME_MQTT_TV_POWER_OFF);
   delay(500);
   // repeat IR to be sure
-  executeCommand(SAMSUNG_POWER_OFF);
-  delay(500);
-  executeCommand(YAMAHA_POWER_OFF);
-  delay(500);
-  // you cannot power off FireTV, but at least you can stop the currently running app
-  executeCommand(KEYBOARD_HOME);
-  delay(500);
-  executeCommand(KEYBOARD_HOME);
 
 }
 

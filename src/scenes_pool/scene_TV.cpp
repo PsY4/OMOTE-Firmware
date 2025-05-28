@@ -1,11 +1,11 @@
 #include <map>
-#include "scenes/scene_TV.h"
+#include "scenes_pool/scene_TV.h"
 #include "applicationInternal/keys.h"
 #include "applicationInternal/scenes/sceneRegistry.h"
 #include "applicationInternal/hardware/hardwarePresenter.h"
 // devices
-#include "devices/TV/device_samsungTV/device_samsungTV.h"
-#include "devices/AVreceiver/device_yamahaAmp/device_yamahaAmp.h"
+//#include "devices/TV/device_lgTV/device_lgTV.h"
+//#include "devices/AVreceiver/device_onkyoAmp/device_onkyoAmp.h"
 #include "applicationInternal/commandHandler.h"
 // guis
 #include "guis/gui_numpad.h"
@@ -33,14 +33,14 @@ void scene_setKeys_TV() {
   
   key_commands_short_TV = {
   
-    {KEY_STOP,  SAMSUNG_PAUSE    },    {KEY_REWI,  SAMSUNG_REWIND   },    {KEY_PLAY,  SAMSUNG_PLAY     },    {KEY_FORW,  SAMSUNG_FASTFORWARD},
-    {KEY_CONF,  SAMSUNG_GUIDE    },                                                                          {KEY_INFO,  SAMSUNG_MENU     },
-                                                         {KEY_UP,    SAMSUNG_UP       },
-                      {KEY_LEFT,  SAMSUNG_LEFT    },     {KEY_OK,    SAMSUNG_SELECT   },    {KEY_RIGHT, SAMSUNG_RIGHT    },
-                                                         {KEY_DOWN,  SAMSUNG_DOWN     },
-                                                                                                             {KEY_SRC,   SAMSUNG_EXIT     },
-                                                                                                             {KEY_CHUP,  SAMSUNG_CHANNEL_UP},
-                                                                                                             {KEY_CHDOW, SAMSUNG_CHANNEL_DOWN},
+    {KEY_STOP,  COMMAND_UNKNOWN    },    {KEY_REWI,  COMMAND_UNKNOWN   },    {KEY_PLAY,  COMMAND_UNKNOWN     },    {KEY_FORW,  COMMAND_UNKNOWN},
+    {KEY_CONF,  COMMAND_UNKNOWN    },                                                                          {KEY_INFO,  COMMAND_UNKNOWN     },
+                                                         {KEY_UP,    COMMAND_UNKNOWN       },
+                      {KEY_LEFT,  COMMAND_UNKNOWN    },     {KEY_OK,    COMMAND_UNKNOWN   },    {KEY_RIGHT, COMMAND_UNKNOWN    },
+                                                         {KEY_DOWN,  COMMAND_UNKNOWN     },
+                                                                                                             {KEY_SRC,   COMMAND_UNKNOWN     },
+                                                                                                             {KEY_CHUP,  COMMAND_UNKNOWN},
+                                                                                                             {KEY_CHDOW, COMMAND_UNKNOWN},
   
   };
   
@@ -52,13 +52,13 @@ void scene_setKeys_TV() {
 }
 
 void scene_start_sequence_TV(void) {
-  executeCommand(SAMSUNG_POWER_ON);
+  //executeCommand(SAMSUNG_POWER_ON);
   delay(500);
-  executeCommand(YAMAHA_POWER_ON);
+  //executeCommand(ONKYO_POWER_ON);
   delay(1500);
-  executeCommand(YAMAHA_INPUT_DVD);
+  //executeCommand(ONKYO_INPUT_DVD);
   delay(3000);
-  executeCommand(SAMSUNG_INPUT_TV);
+  //executeCommand(SAMSUNG_INPUT_TV);
 
 }
 

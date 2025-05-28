@@ -71,21 +71,6 @@ void register_device_lgTV()
   register_command(&LGTV_POWER_ON       , makeCommandData(IR, {std::to_string(IR_PROTOCOL_NEC), "0x20DF23DC"}));
   register_command(&LGTV_POWER_TOGGLE   , makeCommandData(IR, {std::to_string(IR_PROTOCOL_NEC), "0x20DF10EF"}));
   register_command(&LGTV_SOURCE         , makeCommandData(IR, {std::to_string(IR_PROTOCOL_NEC), "0x20DFD02F"}));
-  register_command(&LGTV_NUM_1          , makeCommandData(IR, {std::to_string(IR_PROTOCOL_NEC), "0x20DF8877"}));
-  register_command(&LGTV_NUM_2          , makeCommandData(IR, {std::to_string(IR_PROTOCOL_NEC), "0x20DF48B7"}));
-  register_command(&LGTV_NUM_3          , makeCommandData(IR, {std::to_string(IR_PROTOCOL_NEC), "0x20DFC837"}));
-  register_command(&LGTV_NUM_4          , makeCommandData(IR, {std::to_string(IR_PROTOCOL_NEC), "0x20DF28D7"}));
-  register_command(&LGTV_NUM_5          , makeCommandData(IR, {std::to_string(IR_PROTOCOL_NEC), "0x20DFA857"}));
-  register_command(&LGTV_NUM_6          , makeCommandData(IR, {std::to_string(IR_PROTOCOL_NEC), "0x20DF6897"}));
-  register_command(&LGTV_NUM_7          , makeCommandData(IR, {std::to_string(IR_PROTOCOL_NEC), "0x20DFE817"}));
-  register_command(&LGTV_NUM_8          , makeCommandData(IR, {std::to_string(IR_PROTOCOL_NEC), "0x20DF18E7"}));
-  register_command(&LGTV_NUM_9          , makeCommandData(IR, {std::to_string(IR_PROTOCOL_NEC), "0x20DF9867"}));
-  register_command(&LGTV_NUM_0          , makeCommandData(IR, {std::to_string(IR_PROTOCOL_NEC), "0x20DF08F7"}));
-  register_command(&LGTV_PRECH          , makeCommandData(IR, {std::to_string(IR_PROTOCOL_NEC), "0x20DF5BA7"}));
-  register_command(&LGTV_VOL_MINUS      , makeCommandData(IR, {std::to_string(IR_PROTOCOL_NEC), "0x20DFC03F"}));
-  register_command(&LGTV_VOL_PLUS       , makeCommandData(IR, {std::to_string(IR_PROTOCOL_NEC), "0x20DF40BF"}));
-  register_command(&LGTV_MUTE_TOGGLE    , makeCommandData(IR, {std::to_string(IR_PROTOCOL_NEC), "0x20DF906F"}));
-  //register_command(&LGTV_CHLIST         , makeCommandData(IR, {std::to_string(IR_PROTOCOL_NEC), "0x20DFCA35"}));
   register_command(&LGTV_CHANNEL_UP     , makeCommandData(IR, {std::to_string(IR_PROTOCOL_NEC), "0x20DF00FF"}));
   register_command(&LGTV_CHANNEL_DOWN   , makeCommandData(IR, {std::to_string(IR_PROTOCOL_NEC), "0x20DF807F"}));
   register_command(&LGTV_MENU           , makeCommandData(IR, {std::to_string(IR_PROTOCOL_NEC), "0x20DFA25D"}));
@@ -103,6 +88,30 @@ void register_device_lgTV()
   register_command(&LGTV_KEY_B          , makeCommandData(IR, {std::to_string(IR_PROTOCOL_NEC), "0x20DF8E71"})); // Green
   register_command(&LGTV_KEY_C          , makeCommandData(IR, {std::to_string(IR_PROTOCOL_NEC), "0x20DFC639"})); // Yellow
   register_command(&LGTV_KEY_D          , makeCommandData(IR, {std::to_string(IR_PROTOCOL_NEC), "0x20DF8679"})); // Blue
+  register_command(&LGTV_INPUT_HDMI_1   , makeCommandData(IR, {std::to_string(IR_PROTOCOL_NEC), "0x20DF738C"}));
+  register_command(&LGTV_INPUT_HDMI_2   , makeCommandData(IR, {std::to_string(IR_PROTOCOL_NEC), "0x20DF33CC"}));
+  register_command(&LGTV_INPUT_HDMI_3   , makeCommandData(IR, {std::to_string(IR_PROTOCOL_NEC), "0x20DF9768"}));
+  register_command(&LGTV_INPUT_HDMI_4   , makeCommandData(IR, {std::to_string(IR_PROTOCOL_NEC), "0x20DF5BA4"}));
+  register_command(&LGTV_INPUT_TV       , makeCommandData(IR, {std::to_string(IR_PROTOCOL_NEC), "0x20DF6B94"}));
+  register_command(&LGTV_HOME           , makeCommandData(IR, {std::to_string(IR_PROTOCOL_NEC), "0x20DF3EC1"}));
+  //register_command(&LGTV_SLEEP          , makeCommandData(IR, {std::to_string(IR_PROTOCOL_NEC), "0x20DF58A7"}));
+  //register_command(&LGTV_3D             , makeCommandData(IR, {std::to_string(IR_PROTOCOL_NEC), "0x20DF3BC4"}));
+  //register_command(&LGTV_INPUT_COMPONENT, makeCommandData(IR, {std::to_string(IR_PROTOCOL_NEC), "0x20DFFD02"}));
+  //register_command(&LGTV_NUM_1          , makeCommandData(IR, {std::to_string(IR_PROTOCOL_NEC), "0x20DF8877"}));
+  //register_command(&LGTV_NUM_2          , makeCommandData(IR, {std::to_string(IR_PROTOCOL_NEC), "0x20DF48B7"}));
+  //register_command(&LGTV_NUM_3          , makeCommandData(IR, {std::to_string(IR_PROTOCOL_NEC), "0x20DFC837"}));
+  //register_command(&LGTV_NUM_4          , makeCommandData(IR, {std::to_string(IR_PROTOCOL_NEC), "0x20DF28D7"}));
+  //register_command(&LGTV_NUM_5          , makeCommandData(IR, {std::to_string(IR_PROTOCOL_NEC), "0x20DFA857"}));
+  //register_command(&LGTV_NUM_6          , makeCommandData(IR, {std::to_string(IR_PROTOCOL_NEC), "0x20DF6897"}));
+  //register_command(&LGTV_NUM_7          , makeCommandData(IR, {std::to_string(IR_PROTOCOL_NEC), "0x20DFE817"}));
+  //register_command(&LGTV_NUM_8          , makeCommandData(IR, {std::to_string(IR_PROTOCOL_NEC), "0x20DF18E7"}));
+  //register_command(&LGTV_NUM_9          , makeCommandData(IR, {std::to_string(IR_PROTOCOL_NEC), "0x20DF9867"}));
+  //register_command(&LGTV_NUM_0          , makeCommandData(IR, {std::to_string(IR_PROTOCOL_NEC), "0x20DF08F7"}));
+  //register_command(&LGTV_PRECH          , makeCommandData(IR, {std::to_string(IR_PROTOCOL_NEC), "0x20DF5BA7"}));
+  //register_command(&LGTV_VOL_MINUS      , makeCommandData(IR, {std::to_string(IR_PROTOCOL_NEC), "0x20DFC03F"}));
+  //register_command(&LGTV_VOL_PLUS       , makeCommandData(IR, {std::to_string(IR_PROTOCOL_NEC), "0x20DF40BF"}));
+  //register_command(&LGTV_MUTE_TOGGLE    , makeCommandData(IR, {std::to_string(IR_PROTOCOL_NEC), "0x20DF906F"}));
+  //register_command(&LGTV_CHLIST         , makeCommandData(IR, {std::to_string(IR_PROTOCOL_NEC), "0x20DFCA35"}));
   //register_command(&LGTV_PSIZE          , makeCommandData(IR, {std::to_string(IR_PROTOCOL_NEC), "0x20DF0EF1"}));
   //register_command(&LGTV_ADSUBT         , makeCommandData(IR, {std::to_string(IR_PROTOCOL_NEC), "0x20DF8976"}));
   //register_command(&LGTV_REWIND         , makeCommandData(IR, {std::to_string(IR_PROTOCOL_NEC), "0x20DFF10E"}));
@@ -113,13 +122,4 @@ void register_device_lgTV()
   //register_command(&LGTV_STOP           , makeCommandData(IR, {std::to_string(IR_PROTOCOL_NEC), "0x20DF8D72"}));
   //register_command(&LGTV_POWER_OFF      , makeCommandData(IR, {std::to_string(IR_PROTOCOL_NEC), "0x20DFA35C"}));
   //register_command(&LGTV_POWER_ON       , makeCommandData(IR, {std::to_string(IR_PROTOCOL_NEC), "0x20DF23DC"}));
-  register_command(&LGTV_INPUT_HDMI_1   , makeCommandData(IR, {std::to_string(IR_PROTOCOL_NEC), "0x20DF738C"}));
-  register_command(&LGTV_INPUT_HDMI_2   , makeCommandData(IR, {std::to_string(IR_PROTOCOL_NEC), "0x20DF33CC"}));
-  register_command(&LGTV_INPUT_HDMI_3   , makeCommandData(IR, {std::to_string(IR_PROTOCOL_NEC), "0x20DF9768"}));
-  register_command(&LGTV_INPUT_HDMI_4   , makeCommandData(IR, {std::to_string(IR_PROTOCOL_NEC), "0x20DF5BA4"}));
-  //register_command(&LGTV_INPUT_COMPONENT, makeCommandData(IR, {std::to_string(IR_PROTOCOL_NEC), "0x20DFFD02"}));
-  register_command(&LGTV_INPUT_TV       , makeCommandData(IR, {std::to_string(IR_PROTOCOL_NEC), "0x20DF6B94"}));
-  //register_command(&LGTV_SLEEP          , makeCommandData(IR, {std::to_string(IR_PROTOCOL_NEC), "0x20DF58A7"}));
-  register_command(&LGTV_3D             , makeCommandData(IR, {std::to_string(IR_PROTOCOL_NEC), "0x20DF3BC4"}));
-  register_command(&LGTV_HOME           , makeCommandData(IR, {std::to_string(IR_PROTOCOL_NEC), "0x20DF3EC1"}));
 }

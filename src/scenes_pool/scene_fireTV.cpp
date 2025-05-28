@@ -1,11 +1,11 @@
 #include <map>
-#include "scenes/scene_fireTV.h"
+#include "scenes_pool/scene_fireTV.h"
 #include "applicationInternal/keys.h"
 #include "applicationInternal/scenes/sceneRegistry.h"
 #include "applicationInternal/hardware/hardwarePresenter.h"
 // devices
-#include "devices/TV/device_samsungTV/device_samsungTV.h"
-#include "devices/AVreceiver/device_yamahaAmp/device_yamahaAmp.h"
+#include "devices_pool/TV/device_samsungTV/device_samsungTV.h"
+//#include "devices/AVreceiver/device_onkyoAmp/device_onkyoAmp.h"
 #include "applicationInternal/commandHandler.h"
 // guis
 #include "guis/gui_numpad.h"
@@ -54,9 +54,9 @@ void scene_setKeys_fireTV() {
 void scene_start_sequence_fireTV(void) {
   executeCommand(SAMSUNG_POWER_ON);
   delay(500);
-  executeCommand(YAMAHA_POWER_ON);
+ // executeCommand(ONKYO_POWER_ON);
   delay(1500);
-  executeCommand(YAMAHA_INPUT_DTV);
+ // executeCommand(ONKYO_INPUT_DTV);
   delay(3000);
   executeCommand(SAMSUNG_INPUT_HDMI_2);
   delay(100);

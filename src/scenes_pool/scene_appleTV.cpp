@@ -1,14 +1,14 @@
 #include <map>
-#include "scenes/scene_appleTV.h"
+#include "scenes_pool/scene_appleTV.h"
 #include "applicationInternal/keys.h"
 #include "applicationInternal/scenes/sceneRegistry.h"
 #include "applicationInternal/hardware/hardwarePresenter.h"
 // devices
-#include "devices/TV/device_samsungTV/device_samsungTV.h"
-#include "devices/AVreceiver/device_yamahaAmp/device_yamahaAmp.h"
+#include "devices_pool/TV/device_samsungTV/device_samsungTV.h"
+//#include "devices/AVreceiver/device_onkyoAmp/device_onkyoAmp.h"
 #include "applicationInternal/commandHandler.h"
 // guis
-#include "devices/mediaPlayer/device_appleTV/gui_appleTV.h"
+#include "devices_pool/mediaPlayer/device_appleTV/gui_appleTV.h"
 
 uint16_t SCENE_APPLETV      ; //"Scene_appleTV"
 uint16_t SCENE_APPLETV_FORCE; //"Scene_appleTV_force"
@@ -54,9 +54,9 @@ void scene_setKeys_appleTV() {
 void scene_start_sequence_appleTV(void) {
   executeCommand(SAMSUNG_POWER_ON);
   delay(500);
-  executeCommand(YAMAHA_POWER_ON);
+  //executeCommand(ONKYO_POWER_ON);
   delay(1500);
-  executeCommand(YAMAHA_INPUT_DVD);
+  //executeCommand(ONKYO_INPUT_DVD);
   delay(3000);
   executeCommand(SAMSUNG_INPUT_HDMI_3);
 

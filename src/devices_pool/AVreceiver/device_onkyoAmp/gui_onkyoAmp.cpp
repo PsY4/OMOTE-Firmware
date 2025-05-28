@@ -2,19 +2,19 @@
 #include "applicationInternal/gui/guiBase.h"
 #include "applicationInternal/gui/guiRegistry.h"
 #include "applicationInternal/commandHandler.h"
-#include "devices/AVreceiver/device_yamahaAmp/device_yamahaAmp.h"
-#include "devices/AVreceiver/device_yamahaAmp/gui_yamahaAmp.h"
+#include "devices/AVreceiver/device_onkyoAmp/device_onkyoAmp.h"
+#include "devices/AVreceiver/device_onkyoAmp/gui_onkyoAmp.h"
 
 static void button_clicked_event_cb(lv_event_t* e) {
   int user_data = (intptr_t)(e->user_data);
 
   if (user_data == 0) {
-    executeCommand(YAMAHA_STANDARD);
+    executeCommand(ONKYO_STANDARD);
   }
 
 }
 
-void create_tab_content_yamahaAmp(lv_obj_t* tab) {
+void create_tab_content_onkyoAmp(lv_obj_t* tab) {
 
   // Add content to the sceneSelection tab
 
@@ -35,12 +35,12 @@ void create_tab_content_yamahaAmp(lv_obj_t* tab) {
 
 }
 
-void notify_tab_before_delete_yamahaAmp(void) {
+void notify_tab_before_delete_onkyoAmp(void) {
   // remember to set all pointers to lvgl objects to NULL if they might be accessed from outside.
   // They must check if object is NULL and must not use it if so
   
 }
 
-void register_gui_yamahaAmp(void){
-  register_gui(std::string(tabName_yamahaAmp), & create_tab_content_yamahaAmp, & notify_tab_before_delete_yamahaAmp);
+void register_gui_onkyoAmp(void){
+  register_gui(std::string(tabName_onkyoAmp), & create_tab_content_onkyoAmp, & notify_tab_before_delete_onkyoAmp);
 }

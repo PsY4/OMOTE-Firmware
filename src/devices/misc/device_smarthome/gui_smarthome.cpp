@@ -36,8 +36,7 @@ static void smartHomeToggle_event_cb(lv_event_t* e){
   // Publish an MQTT message based on the event user data  
   #if (ENABLE_WIFI_AND_MQTT == 1)
   int user_data = *((int*)(&(e->user_data)));
-  if(user_data == 1) executeCommand(SMARTHOME_MQTT_BULB1_SET, payload);
-  if(user_data == 2) executeCommand(SMARTHOME_MQTT_BULB2_SET, payload);
+  //if(user_data == 1) executeCommand(SMARTHOME_MQTT_SUPERMAN_SET, payload);
   #endif
 }
 
@@ -50,8 +49,7 @@ static void smartHomeSlider_event_cb(lv_event_t* e){
   // Publish an MQTT message based on the event user data
   #if (ENABLE_WIFI_AND_MQTT == 1)
   int user_data = *((int*)(&(e->user_data)));
-  if(user_data == 1) executeCommand(SMARTHOME_MQTT_BULB1_BRIGHTNESS_SET, payload_str);
-  if(user_data == 2) executeCommand(SMARTHOME_MQTT_BULB2_BRIGHTNESS_SET, payload_str);
+  //if(user_data == 1) executeCommand(SMARTHOME_MQTT_SUPERMAN_BRIGHTNESS_SET, payload_str);
   #endif
 }
 
@@ -64,7 +62,7 @@ void create_tab_content_smarthome(lv_obj_t* tab) {
 
   // Add a label, then a box for the light controls
   lv_obj_t* menuLabel = lv_label_create(tab);
-  lv_label_set_text(menuLabel, "Living Room");
+  lv_label_set_text(menuLabel, "Bureau");
 
   lv_obj_t* menuBox = lv_obj_create(tab);
   lv_obj_set_size(menuBox, lv_pct(100), 79);
@@ -78,7 +76,7 @@ void create_tab_content_smarthome(lv_obj_t* tab) {
   lv_obj_align(bulbIcon, LV_ALIGN_TOP_LEFT, 0, 0);
 
   menuLabel = lv_label_create(menuBox);
-  lv_label_set_text(menuLabel, "Floor Lamp");
+  lv_label_set_text(menuLabel, "Superman");
   lv_obj_align(menuLabel, LV_ALIGN_TOP_LEFT, 22, 3);
   lightToggleA = lv_switch_create(menuBox);
   if (lightToggleAstate) {
