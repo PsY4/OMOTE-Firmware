@@ -34,11 +34,11 @@ t_gui_list main_gui_list;
 void register_scene_defaultKeys(void) {
   key_repeatModes_default = {
                                                                                                              {KEY_OFF,   SHORT            },
-    {KEY_STOP,  SHORT            },    {KEY_REWI,  SHORTorLONG      },    {KEY_PLAY,  SHORT            },    {KEY_FORW,  SHORTorLONG      },
+    {KEY_STOP,  SHORT            },    {KEY_REWI,  SHORT_REPEATED   },    {KEY_PLAY,  SHORT            },    {KEY_FORW,  SHORT_REPEATED   },
     {KEY_CONF,  SHORT            },                                                                          {KEY_INFO,  SHORT            },
-                                                         {KEY_UP,    SHORT            },
-                      {KEY_LEFT,  SHORT            },    {KEY_OK,    SHORT            },    {KEY_RIGHT, SHORT            },
-                                                         {KEY_DOWN,  SHORT            },
+                                                         {KEY_UP,    SHORT_REPEATED},
+                      {KEY_LEFT, SHORT_REPEATED    },    {KEY_OK,    SHORT         },     {KEY_RIGHT, SHORT_REPEATED},
+                                                         {KEY_DOWN,  SHORT_REPEATED},
     {KEY_BACK,  SHORT            },                                                                          {KEY_SRC,   SHORT            },
     {KEY_VOLUP, SHORT_REPEATED   },                      {KEY_MUTE,  SHORT            },                     {KEY_CHUP,  SHORT            },
     {KEY_VOLDO, SHORT_REPEATED   },                      {KEY_REC,   SHORT            },                     {KEY_CHDOW, SHORT            },
@@ -46,16 +46,16 @@ void register_scene_defaultKeys(void) {
   };
   
   key_commands_short_default = {
-                                                                                                             {KEY_OFF,   SCENE_ALLOFF_FORCE},
-    {KEY_STOP,  SMARTHOME_MQTT_SHIELD_STOP},        {KEY_REWI,  SMARTHOME_MQTT_SHIELD_REVERSE  },      {KEY_PLAY,  SMARTHOME_MQTT_SHIELD_PLAY  },         {KEY_FORW,  SMARTHOME_MQTT_SHIELD_FORWARD  }, 
-    {KEY_CONF,  SMARTHOME_MQTT_SHIELD_SHIELD  },                                                                            {KEY_INFO,  SMARTHOME_MQTT_AMPLI_INFO  }, 
-                                                       {KEY_UP,    SMARTHOME_MQTT_SHIELD_UP  },  
-                      {KEY_LEFT,  SMARTHOME_MQTT_SHIELD_LEFT  },      {KEY_OK,    SMARTHOME_MQTT_SHIELD_OK  },    {KEY_RIGHT, SMARTHOME_MQTT_SHIELD_RIGHT  },
-                                                       {KEY_DOWN,  SMARTHOME_MQTT_SHIELD_DOWN  },  
-    {KEY_BACK,  SMARTHOME_MQTT_SHIELD_EXIT  },                                                                           {KEY_SRC,   COMMAND_UNKNOWN  }, 
-    {KEY_VOLUP, SMARTHOME_MQTT_AMPLI_VOL_UP  },        {KEY_MUTE,  SMARTHOME_MQTT_AMPLI_MUTE},                {KEY_CHUP,  COMMAND_UNKNOWN  },
-    {KEY_VOLDO, SMARTHOME_MQTT_AMPLI_VOL_DOWN },      {KEY_REC,   SCENE_BACK_TO_PREVIOUS_GUI_LIST  },         {KEY_CHDOW, COMMAND_UNKNOWN  },
-    {KEY_RED,   COMMAND_UNKNOWN   },     {KEY_GREEN, COMMAND_UNKNOWN},      {KEY_YELLO, COMMAND_UNKNOWN},     {KEY_BLUE,  COMMAND_UNKNOWN  },
+                                                                                                                                   {KEY_OFF, SCENE_ALLOFF_FORCE},
+    {KEY_STOP,  SMARTHOME_MQTT_SHIELD_STOP}, {KEY_REWI,  SMARTHOME_MQTT_SHIELD_REVERSE }, {KEY_PLAY, SMARTHOME_MQTT_SHIELD_PLAY }, {KEY_FORW, SMARTHOME_MQTT_SHIELD_FORWARD }, 
+    {KEY_CONF,  SMARTHOME_MQTT_SHIELD_SHIELD  },                                                                                   {KEY_INFO, SMARTHOME_MQTT_AMPLI_INFO  }, 
+                                                                    {KEY_UP, SMARTHOME_MQTT_SHIELD_UP },  
+                          {KEY_LEFT,  SMARTHOME_MQTT_SHIELD_LEFT }, {KEY_OK, SMARTHOME_MQTT_SHIELD_OK }, {KEY_RIGHT, SMARTHOME_MQTT_SHIELD_RIGHT },
+                                                                    {KEY_DOWN, SMARTHOME_MQTT_SHIELD_DOWN },  
+    {KEY_BACK,  SMARTHOME_MQTT_SHIELD_EXIT  },                                                                                      {KEY_SRC, COMMAND_UNKNOWN }, 
+    {KEY_VOLUP, SMARTHOME_MQTT_AMPLI_VOL_UP  },                     {KEY_MUTE,  SMARTHOME_MQTT_AMPLI_MUTE},                         {KEY_CHUP,  COMMAND_UNKNOWN  },
+    {KEY_VOLDO, SMARTHOME_MQTT_AMPLI_VOL_DOWN },                    {KEY_REC,   SCENE_BACK_TO_PREVIOUS_GUI_LIST  },                 {KEY_CHDOW, COMMAND_UNKNOWN  },
+    {KEY_RED, COMMAND_UNKNOWN },              {KEY_GREEN, COMMAND_UNKNOWN},               {KEY_YELLO, COMMAND_UNKNOWN},             {KEY_BLUE,  COMMAND_UNKNOWN  },
   };
   
   key_commands_long_default = {

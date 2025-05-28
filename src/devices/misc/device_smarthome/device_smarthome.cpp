@@ -68,6 +68,12 @@ uint16_t SMARTHOME_MQTT_SHIELD_RIGHT;
 uint16_t SMARTHOME_MQTT_SHIELD_OK;
 uint16_t SMARTHOME_MQTT_SHIELD_SHIELD;
 
+// HomeAssistant
+uint16_t SMARTHOME_MQTT_HA_LABOULE_SET;
+uint16_t SMARTHOME_MQTT_HA_LABOULE_BRIGHTNESS_SET;
+uint16_t SMARTHOME_MQTT_HA_PLAFOND_SET;
+uint16_t SMARTHOME_MQTT_HA_PLAFOND_BRIGHTNESS_SET;
+
 void register_device_smarthome() {
   #if (ENABLE_WIFI_AND_MQTT == 1)
   register_command(&SMARTHOME_MQTT_AMPLI_POWER_TOGGLE , makeCommandData(MQTT, {"omote/smarthome/ampli/command", "power_toggle"}));
@@ -136,5 +142,10 @@ void register_device_smarthome() {
   register_command(&SMARTHOME_MQTT_SHIELD_OK            , makeCommandData(MQTT, {"omote/smarthome/shield/command", "ok"}));
   register_command(&SMARTHOME_MQTT_SHIELD_SHIELD        , makeCommandData(MQTT, {"omote/smarthome/shield/command", "shield"}));
 
+  // Home assistant
+  register_command(&SMARTHOME_MQTT_HA_LABOULE_SET             , makeCommandData(MQTT, {"omote/smarthome/ha/laboule/set"}));
+  register_command(&SMARTHOME_MQTT_HA_LABOULE_BRIGHTNESS_SET  , makeCommandData(MQTT, {"omote/smarthome/ha/laboule/brightness"}));
+  register_command(&SMARTHOME_MQTT_HA_PLAFOND_SET             , makeCommandData(MQTT, {"omote/smarthome/ha/salon/set"}));
+  register_command(&SMARTHOME_MQTT_HA_PLAFOND_BRIGHTNESS_SET  , makeCommandData(MQTT, {"omote/smarthome/ha/salon/brightness"}));
   #endif
 }

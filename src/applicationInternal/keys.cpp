@@ -31,7 +31,7 @@ processedState keyStateProcessed[keypadROWS][keypadCOLS] = {
   {{IDLE,false},{IDLE,false},{IDLE,false},{IDLE,false},{IDLE,false}},
 };
 // used in doShortPress to know when a shortPress should be sent again and again
-int repeatRate = 125; // in milliseconds
+int repeatRate = 200; // in milliseconds
 unsigned long lastTimeSent[keypadROWS][keypadCOLS] ={
   {0, 0, 0, 0, 0},
   {0, 0, 0, 0, 0},

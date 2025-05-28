@@ -72,7 +72,7 @@ int main(int argc, char *argv[]) {
   // Restore settings from internal flash memory
   init_preferences();
   // blinking led
-  init_userled();
+  //init_userled();
   // startup SD card
   #if(OMOTE_HARDWARE_REV >= 5)
   // SD card is currently not used, so save some time on startup and don't init the SD card
