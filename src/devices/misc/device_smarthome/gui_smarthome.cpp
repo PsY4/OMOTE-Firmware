@@ -14,13 +14,25 @@ LV_IMG_DECLARE(lightbulb);
 
 static lv_obj_t* lightToggleA;
 static lv_obj_t* lightToggleB;
+static lv_obj_t* lightToggleC;
+static lv_obj_t* lightToggleD;
+static lv_obj_t* lightToggleE;
 static lv_obj_t* sliderA;
 static lv_obj_t* sliderB;
+static lv_obj_t* sliderC;
+static lv_obj_t* sliderD;
+static lv_obj_t* sliderE;
 
 static bool lightToggleAstate = false;
 static bool lightToggleBstate = false;
+static bool lightToggleCstate = false;
+static bool lightToggleDstate = false;
+static bool lightToggleEstate = false;
 static int32_t sliderAvalue = 0;
 static int32_t sliderBvalue = 0;
+static int32_t sliderCvalue = 0;
+static int32_t sliderDvalue = 0;
+static int32_t sliderEvalue = 0;
 
 uint16_t GUI_SMARTHOME_ACTIVATE;
 
@@ -35,6 +47,9 @@ static void smartHomeToggle_event_cb(lv_event_t* e){
   int user_data = *((int*)(&(e->user_data)));
   if(user_data == 1) executeCommand(SMARTHOME_MQTT_HA_LABOULE_SET, payload);
   if(user_data == 2) executeCommand(SMARTHOME_MQTT_HA_PLAFOND_SET, payload);
+  if(user_data == 3) executeCommand(SMARTHOME_MQTT_HA_PLAFOND2_SET, payload);
+  if(user_data == 4) executeCommand(SMARTHOME_MQTT_HA_PIXAR_SET, payload);
+  if(user_data == 5) executeCommand(SMARTHOME_MQTT_HA_NANOLEAF_SET, payload);
   #endif
 }
 
@@ -48,6 +63,9 @@ static void smartHomeSlider_event_cb(lv_event_t* e){
   int user_data = *((int*)(&(e->user_data)));
   if(user_data == 1) executeCommand(SMARTHOME_MQTT_HA_LABOULE_BRIGHTNESS_SET, payload_str);
   if(user_data == 2) executeCommand(SMARTHOME_MQTT_HA_PLAFOND_BRIGHTNESS_SET, payload_str);
+  if(user_data == 3) executeCommand(SMARTHOME_MQTT_HA_PLAFOND2_BRIGHTNESS_SET, payload_str);
+  if(user_data == 4) executeCommand(SMARTHOME_MQTT_HA_PIXAR_BRIGHTNESS_SET, payload_str);
+  if(user_data == 5) executeCommand(SMARTHOME_MQTT_HA_NANOLEAF_BRIGHTNESS_SET, payload_str);
   #endif
 }
 
@@ -103,17 +121,22 @@ void create_tab_content_smarthome(lv_obj_t* tab) {
   menuLabel = lv_label_create(tab);
   lv_label_set_text(menuLabel, "Salle à manger");
 
-  lv_obj_t* menuBox = lv_obj_create(tab);
-  lv_obj_set_size(menuBox, lv_pct(100), 79);
-  lv_obj_set_style_bg_color(menuBox, color_primary, LV_PART_MAIN);
-  lv_obj_set_style_border_width(menuBox, 0, LV_PART_MAIN);
+  create_device_control(tab, "Plafond 2", 3, lightToggleCstate, sliderCvalue, &lightToggleC, &sliderC);
+  create_device_control(tab, "Pixar", 4, lightToggleDstate, sliderDvalue, &lightToggleD, &sliderD);
+  create_device_control(tab, "Nanoleaf", 5, lightToggleEstate, sliderEvalue, &lightToggleE, &sliderE);
 }
 
 void notify_tab_before_delete_smarthome(void) {
   lightToggleAstate = lv_obj_has_state(lightToggleA, LV_STATE_CHECKED);
   lightToggleBstate = lv_obj_has_state(lightToggleB, LV_STATE_CHECKED);
+  lightToggleCstate = lv_obj_has_state(lightToggleC, LV_STATE_CHECKED);
+  lightToggleDstate = lv_obj_has_state(lightToggleD, LV_STATE_CHECKED);
+  lightToggleEstate = lv_obj_has_state(lightToggleE, LV_STATE_CHECKED);
   sliderAvalue = lv_slider_get_value(sliderA);
   sliderBvalue = lv_slider_get_value(sliderB);
+  sliderCvalue = lv_slider_get_value(sliderC);
+  sliderDvalue = lv_slider_get_value(sliderD);
+  sliderEvalue = lv_slider_get_value(sliderE);
 }
 
 void gui_setKeys_smarthome() {
