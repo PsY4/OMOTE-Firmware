@@ -5,3 +5,4 @@
 const char * const tabName_smarthome = "Smart Home";
 extern uint16_t GUI_SMARTHOME_ACTIVATE;
 void register_gui_smarthome(void);
+void updateFromMQTTmessage(std::string , std::string );

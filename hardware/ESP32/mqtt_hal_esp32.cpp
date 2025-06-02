@@ -66,16 +66,16 @@ void init_mqtt_HAL(void) {
   WiFi.setSleep(true);
 }
 
-std::string subscribeTopicOMOTEtest = "OMOTE/test";
+std::string subscribeTopicOMOTEtest = "omote/remote/return";
 // For connecting to one or several BLE clients
-std::string subscribeTopicOMOTE_BLEstartAdvertisingForAll        = "OMOTE/BLE/startAdvertisingForAll";
-std::string subscribeTopicOMOTE_BLEstartAdvertisingWithWhitelist = "OMOTE/BLE/startAdvertisingWithWhitelist";
-std::string subscribeTopicOMOTE_BLEstartAdvertisingDirected      = "OMOTE/BLE/startAdvertisingDirected";
-std::string subscribeTopicOMOTE_BLEstopAdvertising               = "OMOTE/BLE/stopAdvertising";
-std::string subscribeTopicOMOTE_BLEprintConnectedClients         = "OMOTE/BLE/printConnectedClients";
-std::string subscribeTopicOMOTE_BLEdisconnectAllClients          = "OMOTE/BLE/disconnectAllClients";
-std::string subscribeTopicOMOTE_BLEprintBonds                    = "OMOTE/BLE/printBonds";
-std::string subscribeTopicOMOTE_BLEdeleteBonds                   = "OMOTE/BLE/deleteBonds";
+std::string subscribeTopicOMOTE_BLEstartAdvertisingForAll        = "omote/BLE/startAdvertisingForAll";
+std::string subscribeTopicOMOTE_BLEstartAdvertisingWithWhitelist = "omote/BLE/startAdvertisingWithWhitelist";
+std::string subscribeTopicOMOTE_BLEstartAdvertisingDirected      = "omote/BLE/startAdvertisingDirected";
+std::string subscribeTopicOMOTE_BLEstopAdvertising               = "omote/BLE/stopAdvertising";
+std::string subscribeTopicOMOTE_BLEprintConnectedClients         = "omote/BLE/printConnectedClients";
+std::string subscribeTopicOMOTE_BLEdisconnectAllClients          = "omote/BLE/disconnectAllClients";
+std::string subscribeTopicOMOTE_BLEprintBonds                    = "omote/BLE/printBonds";
+std::string subscribeTopicOMOTE_BLEdeleteBonds                   = "omote/BLE/deleteBonds";
 
 void callback(char* topic, byte* payload, unsigned int length) {
   // handle message arrived

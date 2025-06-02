@@ -55,7 +55,7 @@ void register_scene_defaultKeys(void) {
     {KEY_BACK,  SMARTHOME_MQTT_SHIELD_EXIT  },                                                                                      {KEY_SRC, COMMAND_UNKNOWN }, 
     {KEY_VOLUP, SMARTHOME_MQTT_AMPLI_VOL_UP  },                     {KEY_MUTE,  SMARTHOME_MQTT_AMPLI_MUTE},                         {KEY_CHUP,  COMMAND_UNKNOWN  },
     {KEY_VOLDO, SMARTHOME_MQTT_AMPLI_VOL_DOWN },                    {KEY_REC,   SCENE_BACK_TO_PREVIOUS_GUI_LIST  },                 {KEY_CHDOW, COMMAND_UNKNOWN  },
-    {KEY_RED, COMMAND_UNKNOWN },              {KEY_GREEN, COMMAND_UNKNOWN},               {KEY_YELLO, COMMAND_UNKNOWN},             {KEY_BLUE,  COMMAND_UNKNOWN  },
+    {KEY_RED, SMARTHOME_MQTT_TV_OK },              {KEY_GREEN, COMMAND_UNKNOWN},               {KEY_YELLO, SMARTHOME_MQTT_HA_PLAFOND_TOGGLE},             {KEY_BLUE,  SMARTHOME_MQTT_HA_LABOULE_TOGGLE  },
   };
   
   key_commands_long_default = {

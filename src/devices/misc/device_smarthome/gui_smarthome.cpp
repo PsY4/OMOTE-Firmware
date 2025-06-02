@@ -40,6 +40,8 @@ std::map<char, repeatModes> key_repeatModes_smarthome = {};
 std::map<char, uint16_t> key_commands_short_smarthome = {};
 std::map<char, uint16_t> key_commands_long_smarthome = {};
 
+bool smartHomeTabIsInMemory = false;
+
 // Smart Home Toggle Event handler
 static void smartHomeToggle_event_cb(lv_event_t* e){
   std::string payload = lv_obj_has_state(lv_event_get_target(e), LV_STATE_CHECKED) ? "true" : "false";
@@ -119,11 +121,14 @@ void create_tab_content_smarthome(lv_obj_t* tab) {
   create_device_control(tab, "Plafond", 2, lightToggleBstate, sliderBvalue, &lightToggleB, &sliderB);
 
   menuLabel = lv_label_create(tab);
-  lv_label_set_text(menuLabel, "Salle à manger");
+  lv_label_set_text(menuLabel, "Salle a manger");
 
   create_device_control(tab, "Plafond 2", 3, lightToggleCstate, sliderCvalue, &lightToggleC, &sliderC);
   create_device_control(tab, "Pixar", 4, lightToggleDstate, sliderDvalue, &lightToggleD, &sliderD);
   create_device_control(tab, "Nanoleaf", 5, lightToggleEstate, sliderEvalue, &lightToggleE, &sliderE);
+
+  smartHomeTabIsInMemory = true;
+
 }
 
 void notify_tab_before_delete_smarthome(void) {
@@ -137,6 +142,7 @@ void notify_tab_before_delete_smarthome(void) {
   sliderCvalue = lv_slider_get_value(sliderC);
   sliderDvalue = lv_slider_get_value(sliderD);
   sliderEvalue = lv_slider_get_value(sliderE);
+  smartHomeTabIsInMemory = false;
 }
 
 void gui_setKeys_smarthome() {
@@ -158,3 +164,58 @@ void register_gui_smarthome(void){
 
   register_command(&GUI_SMARTHOME_ACTIVATE, makeCommandData(GUI, {std::to_string(MAIN_GUI_LIST), std::string(tabName_smarthome)}));
 }
+
+void updateFromMQTTmessage(std::string topic, std::string payload) {
+  if (!smartHomeTabIsInMemory) return;
+
+  if (topic == "omote/remote/return") {
+    // Gestion des états ON/OFF
+    if (payload == "laboule_set_true")  { lv_obj_add_state(lightToggleA, LV_STATE_CHECKED);   lightToggleAstate = true; }
+    if (payload == "laboule_set_false") { lv_obj_clear_state(lightToggleA, LV_STATE_CHECKED); lightToggleAstate = false;}
+  
+    if (payload == "salon_set_true")  { lv_obj_add_state(lightToggleB, LV_STATE_CHECKED);   lightToggleBstate = true; }
+    if (payload == "salon_set_false") { lv_obj_clear_state(lightToggleB, LV_STATE_CHECKED); lightToggleBstate = false;}
+
+    if (payload == "salleamanger_set_true")  { lv_obj_add_state(lightToggleC, LV_STATE_CHECKED);   lightToggleCstate = true; }
+    if (payload == "salleamanger_set_false") { lv_obj_clear_state(lightToggleC, LV_STATE_CHECKED); lightToggleCstate = false;} 
+
+    if (payload == "pixar_set_true")  { lv_obj_add_state(lightToggleD, LV_STATE_CHECKED);   lightToggleDstate = true; }
+    if (payload == "pixar_set_false") { lv_obj_clear_state(lightToggleD, LV_STATE_CHECKED); lightToggleDstate = false;}
+ 
+    if (payload == "nanoleaf_set_true")  { lv_obj_add_state(lightToggleE, LV_STATE_CHECKED);   lightToggleEstate = true; }
+    if (payload == "nanoleaf_set_false") { lv_obj_clear_state(lightToggleE, LV_STATE_CHECKED); lightToggleEstate = false;}  
+    
+    if (payload.rfind("laboule_brightness_", 0) == 0) {
+        std::string valueStr = payload.substr(strlen("laboule_brightness_"));
+        int val = std::stoi(valueStr);
+        lv_slider_set_value(sliderA, val, LV_ANIM_ON);
+        sliderAvalue = val;
+    }
+    if (payload.rfind("salon_brightness_", 0) == 0) {
+        std::string valueStr = payload.substr(strlen("salon_brightness_"));
+        int val = std::stoi(valueStr);
+        lv_slider_set_value(sliderB, val, LV_ANIM_ON);
+        sliderBvalue = val;
+    }
+    if (payload.rfind("salleamanger_brightness_", 0) == 0) {
+        std::string valueStr = payload.substr(strlen("salleamanger_brightness_"));
+        int val = std::stoi(valueStr);
+        lv_slider_set_value(sliderC, val, LV_ANIM_ON);
+        sliderCvalue = val;
+    }
+    if (payload.rfind("pixar_brightness_", 0) == 0) {
+        std::string valueStr = payload.substr(strlen("pixar_brightness_"));
+        int val = std::stoi(valueStr);
+        lv_slider_set_value(sliderD, val, LV_ANIM_ON);
+        sliderDvalue = val;
+    }
+    if (payload.rfind("nanoleaf_brightness_", 0) == 0) {
+        std::string valueStr = payload.substr(strlen("nanoleaf_brightness_"));
+        int val = std::stoi(valueStr);
+        lv_slider_set_value(sliderE, val, LV_ANIM_ON);
+        sliderEvalue = val;
+    }
+  
+  }
+}
+

@@ -14,6 +14,7 @@
 #include "guis/gui_irReceiver.h"
 // show received BLE connection messages
 #include "guis/gui_BLEpairing.h"
+#include "devices/misc/device_smarthome/gui_smarthome.h"
 
 uint16_t COMMAND_UNKNOWN;
 
@@ -280,12 +281,13 @@ void receiveWiFiConnected_cb(bool connected) {
     // Remark: in your home automation software, maybe add a short delay (e.g. 100-200 ms) between receiving this message and sending out the status of the smart home devices.
     // WiFi connection could be already available, but MQTT connection could be not completely ready. Just try what works for you.
 
-    // executeCommand(TRIGGER_UPDATE_OF_OMOTE_SMART_HOME_DEVICES);
+     executeCommand(TRIGGER_UPDATE_OF_OMOTE_SMART_HOME_DEVICES);
 
   }
 }
 void receiveMQTTmessage_cb(std::string topic, std::string payload) {
   showMQTTmessage(topic, payload);
+  updateFromMQTTmessage(topic, payload);
 }
 
 #endif

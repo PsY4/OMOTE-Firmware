@@ -70,8 +70,10 @@ uint16_t SMARTHOME_MQTT_SHIELD_SHIELD;
 
 // HomeAssistant
 uint16_t SMARTHOME_MQTT_HA_LABOULE_SET;
+uint16_t SMARTHOME_MQTT_HA_LABOULE_TOGGLE;
 uint16_t SMARTHOME_MQTT_HA_LABOULE_BRIGHTNESS_SET;
 uint16_t SMARTHOME_MQTT_HA_PLAFOND_SET;
+uint16_t SMARTHOME_MQTT_HA_PLAFOND_TOGGLE;
 uint16_t SMARTHOME_MQTT_HA_PLAFOND_BRIGHTNESS_SET;
 uint16_t SMARTHOME_MQTT_HA_PLAFOND2_SET;
 uint16_t SMARTHOME_MQTT_HA_PLAFOND2_BRIGHTNESS_SET;
@@ -150,8 +152,10 @@ void register_device_smarthome() {
 
   // Home assistant
   register_command(&SMARTHOME_MQTT_HA_LABOULE_SET             , makeCommandData(MQTT, {"omote/smarthome/ha/laboule/set"}));
+  register_command(&SMARTHOME_MQTT_HA_LABOULE_TOGGLE          , makeCommandData(MQTT, {"omote/smarthome/ha/laboule/toggle", "toggle"}));
   register_command(&SMARTHOME_MQTT_HA_LABOULE_BRIGHTNESS_SET  , makeCommandData(MQTT, {"omote/smarthome/ha/laboule/brightness"}));
   register_command(&SMARTHOME_MQTT_HA_PLAFOND_SET             , makeCommandData(MQTT, {"omote/smarthome/ha/salon/set"}));
+  register_command(&SMARTHOME_MQTT_HA_PLAFOND_TOGGLE          , makeCommandData(MQTT, {"omote/smarthome/ha/salon/toggle", "toggle"}));
   register_command(&SMARTHOME_MQTT_HA_PLAFOND_BRIGHTNESS_SET  , makeCommandData(MQTT, {"omote/smarthome/ha/salon/brightness"}));
 
   register_command(&SMARTHOME_MQTT_HA_PLAFOND2_SET             , makeCommandData(MQTT, {"omote/smarthome/ha/salleamanger/set"}));
